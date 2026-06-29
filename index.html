@@ -100,7 +100,7 @@ const DAYS={
       {id:'m5',name:'Cable Lateral Raise',sets:3,reps:'15–20',rest:45,target:'7–10 kg/side',tempo:'3-0-2',rir:2,pattern:'Shoulder isolation'},
       {id:'m6',name:'Weighted Dips',sets:3,reps:'8–10',rest:90,target:'BW+10–15 kg',tempo:'3-1-1',rir:2,pattern:'Push compound'},
       {id:'m7',name:'Cable Tricep Pushdown',sets:3,reps:'12–15',rest:60,target:'20–28 kg',tempo:'3-0-2',rir:2,pattern:'Elbow extension'},
-      {id:'m8',name:'Ab Wheel Rollout',sets:3,reps:'10–12',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core anti-ext.'},
+      {id:'m8',name:'Cable Fly (high-to-low pulley)',sets:3,reps:'12–15',rest:60,target:'12–16 kg/side',tempo:'3-0-2',rir:2,pattern:'Chest upper sternal',note:'High pulley — sweep down and in, squeeze at centre. Targets upper pec from different angle to mid pulley fly'},      {id:'m9',name:'Skull Crushers (EZ Bar) — Optional',sets:3,reps:'10–12',rest:75,target:'25–35 kg',tempo:'3-0-1',rir:2,pattern:'Tricep long head',note:'Optional — add if time and energy allow. Lower bar to forehead with elbows fixed. Heaviest long-head tricep exercise available'},
     ],
     stretches:[
       {id:'ms1',name:'Doorway Chest Stretch',hold:'45 sec each · 2 sets',muscles:'Pectoralis major/minor'},
@@ -120,7 +120,7 @@ const DAYS={
       {id:'w5',name:'Face Pulls (cable)',sets:4,reps:'15–20',rest:45,target:'15–20 kg',tempo:'2-2-2',rir:1,pattern:'External rotation'},
       {id:'w6',name:'Barbell Curl',sets:3,reps:'8–10',rest:90,target:'35–45 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion'},
       {id:'w7',name:'Hammer Curl',sets:3,reps:'12–15',rest:60,target:'14–18 kg/DB',tempo:'3-0-1',rir:2,pattern:'Brachialis'},
-      {id:'w8',name:'Hanging Leg Raise',sets:3,reps:'12–15',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core flexion'},
+      {id:'w8',name:'Hanging Leg Raise',sets:3,reps:'12–15',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core flexion'},      {id:'w9',name:'Cable Curl (low pulley, straight bar) — Optional',sets:3,reps:'12–15',rest:60,target:'15–25 kg',tempo:'3-1-2',rir:2,pattern:'Bicep constant tension',note:'Optional — add if time and energy allow. Cable keeps tension at full extension unlike barbell. Maximises time under tension through the complete ROM'},
     ],
     stretches:[
       {id:'ws1',name:'Lat Doorway Stretch (side bend)',hold:'45 sec each · 2 sets',muscles:'Latissimus dorsi, teres major'},
@@ -140,11 +140,11 @@ const DAYS={
       {id:'s5',name:'Nordic Hamstring Curl',sets:3,reps:'6–8',rest:120,target:'Bodyweight',tempo:'5-0-X',rir:1,pattern:'Hip hinge eccentric'},
       {id:'s6',name:'Standing Calf Raise',sets:4,reps:'12–15',rest:60,target:'50–70 kg',tempo:'3-2-1',rir:2,pattern:'Ankle plantar'},
       {id:'s7',name:"Farmer's Carry",sets:3,reps:'40 m walk',rest:90,target:'28–34 kg/hand',tempo:'—',rir:0,pattern:'Loaded carry'},
-      {id:'s8',name:'Close-Grip Bench Press ★',sets:3,reps:'8–10',rest:90,target:'55–65 kg',tempo:'3-1-1',rir:2,pattern:'Push tricep',isNew:1,part:'PART 2 — ARM BLOCK'},
-      {id:'s9',name:'Overhead Tricep Ext. (cable) ★',sets:3,reps:'12–15',rest:60,target:'20–25 kg',tempo:'3-1-2',rir:2,pattern:'Elbow extension',isNew:1},
-      {id:'s10',name:'EZ Bar Preacher Curl ★',sets:3,reps:'10–12',rest:75,target:'30–35 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion',isNew:1},
-      {id:'s11',name:'Incline DB Curl ★',sets:3,reps:'10–12',rest:60,target:'12–14 kg/DB',tempo:'3-0-2',rir:2,pattern:'Bicep stretch',isNew:1},
-      {id:'s12',name:'Wrist Curl + Reverse ★',sets:2,reps:'20 each',rest:45,target:'10–12 kg',tempo:'2-0-2',rir:2,pattern:'Forearm',isNew:1},
+      {id:'s8',name:'Close-Grip Bench Press',sets:3,reps:'8–10',rest:90,target:'55–65 kg',tempo:'3-1-1',rir:2,pattern:'Push tricep',part:'PART 2 — ARM BLOCK'},
+      {id:'s9',name:'Overhead Tricep Ext. (cable)',sets:3,reps:'12–15',rest:0,target:'20–25 kg',tempo:'3-1-2',rir:2,pattern:'Elbow extension',note:'SUPERSET with exercise 10 — go directly to Preacher Curl with no rest. Rest 90 sec after the pair'},
+      {id:'s10',name:'EZ Bar Preacher Curl',sets:3,reps:'10–12',rest:90,target:'30–35 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion',note:'SUPERSET with exercise 9 — performed immediately after Overhead Tricep Ext. Rest 90 sec after completing both'},
+      {id:'s11',name:'Incline DB Curl',sets:3,reps:'10–12',rest:60,target:'12–14 kg/DB',tempo:'3-0-2',rir:2,pattern:'Bicep stretch'},
+      {id:'s12',name:'Wrist Curl + Reverse',sets:2,reps:'20 each',rest:45,target:'10–12 kg',tempo:'2-0-2',rir:2,pattern:'Forearm'},
     ],
     stretches:[
       {id:'ss1',name:'Standing Quad Stretch',hold:'45 sec each · 2 sets',muscles:'Quadriceps, hip flexors'},
@@ -264,7 +264,7 @@ function rHome(){
   return`<div class="safe-top">
     <div style="padding:20px 16px 10px">
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--mut);margin-bottom:6px">PROGRAM V5</div>
-      <h1>Spyridon's Training</h1>
+      <h1>Training Program</h1>
       <p style="font-size:13px;color:var(--mut);margin-top:4px">Tsatsouline · Gray Cook · Schoenfeld</p>
     </div>
 
