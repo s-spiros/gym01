@@ -100,7 +100,8 @@ const DAYS={
       {id:'m5',name:'Cable Lateral Raise',sets:3,reps:'15–20',rest:45,target:'7–10 kg/side',tempo:'3-0-2',rir:2,pattern:'Shoulder isolation'},
       {id:'m6',name:'Weighted Dips',sets:3,reps:'8–10',rest:90,target:'BW+10–15 kg',tempo:'3-1-1',rir:2,pattern:'Push compound'},
       {id:'m7',name:'Cable Tricep Pushdown',sets:3,reps:'12–15',rest:60,target:'20–28 kg',tempo:'3-0-2',rir:2,pattern:'Elbow extension'},
-      {id:'m8',name:'Cable Fly (high-to-low pulley)',sets:3,reps:'12–15',rest:60,target:'12–16 kg/side',tempo:'3-0-2',rir:2,pattern:'Chest upper sternal',note:'High pulley — sweep down and in, squeeze at centre. Targets upper pec from different angle to mid pulley fly'},      {id:'m9',name:'Skull Crushers (EZ Bar) — Optional',sets:3,reps:'10–12',rest:75,target:'25–35 kg',tempo:'3-0-1',rir:2,pattern:'Tricep long head',note:'Optional — add if time and energy allow. Lower bar to forehead with elbows fixed. Heaviest long-head tricep exercise available'},
+      {id:'m8',name:'Cable Fly (high-to-low pulley)',sets:3,reps:'12–15',rest:60,target:'12–16 kg/side',tempo:'3-0-2',rir:2,pattern:'Chest upper sternal',note:'High pulley — sweep down and in, squeeze at centre. Different angle to mid-pulley fly'},
+      {id:'m9',name:'Skull Crushers (EZ Bar) — Optional',sets:3,reps:'10–12',rest:75,target:'25–35 kg',tempo:'3-0-1',rir:2,pattern:'Tricep long head',note:'Optional — only if time and energy allow. Lower bar to forehead, elbows fixed'},
     ],
     stretches:[
       {id:'ms1',name:'Doorway Chest Stretch',hold:'45 sec each · 2 sets',muscles:'Pectoralis major/minor'},
@@ -120,7 +121,8 @@ const DAYS={
       {id:'w5',name:'Face Pulls (cable)',sets:4,reps:'15–20',rest:45,target:'15–20 kg',tempo:'2-2-2',rir:1,pattern:'External rotation'},
       {id:'w6',name:'Barbell Curl',sets:3,reps:'8–10',rest:90,target:'35–45 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion'},
       {id:'w7',name:'Hammer Curl',sets:3,reps:'12–15',rest:60,target:'14–18 kg/DB',tempo:'3-0-1',rir:2,pattern:'Brachialis'},
-      {id:'w8',name:'Hanging Leg Raise',sets:3,reps:'12–15',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core flexion'},      {id:'w9',name:'Cable Curl (low pulley, straight bar) — Optional',sets:3,reps:'12–15',rest:60,target:'15–25 kg',tempo:'3-1-2',rir:2,pattern:'Bicep constant tension',note:'Optional — add if time and energy allow. Cable keeps tension at full extension unlike barbell. Maximises time under tension through the complete ROM'},
+      {id:'w8',name:'Hanging Leg Raise',sets:3,reps:'12–15',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core flexion'},
+      {id:'w9',name:'Cable Curl (low pulley) — Optional',sets:3,reps:'12–15',rest:60,target:'15–25 kg',tempo:'3-1-2',rir:2,pattern:'Bicep constant tension',note:'Optional — only if time and energy allow. Cable keeps tension at full extension'},
     ],
     stretches:[
       {id:'ws1',name:'Lat Doorway Stretch (side bend)',hold:'45 sec each · 2 sets',muscles:'Latissimus dorsi, teres major'},
@@ -141,8 +143,8 @@ const DAYS={
       {id:'s6',name:'Standing Calf Raise',sets:4,reps:'12–15',rest:60,target:'50–70 kg',tempo:'3-2-1',rir:2,pattern:'Ankle plantar'},
       {id:'s7',name:"Farmer's Carry",sets:3,reps:'40 m walk',rest:90,target:'28–34 kg/hand',tempo:'—',rir:0,pattern:'Loaded carry'},
       {id:'s8',name:'Close-Grip Bench Press',sets:3,reps:'8–10',rest:90,target:'55–65 kg',tempo:'3-1-1',rir:2,pattern:'Push tricep',part:'PART 2 — ARM BLOCK'},
-      {id:'s9',name:'Overhead Tricep Ext. (cable)',sets:3,reps:'12–15',rest:0,target:'20–25 kg',tempo:'3-1-2',rir:2,pattern:'Elbow extension',note:'SUPERSET with exercise 10 — go directly to Preacher Curl with no rest. Rest 90 sec after the pair'},
-      {id:'s10',name:'EZ Bar Preacher Curl',sets:3,reps:'10–12',rest:90,target:'30–35 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion',note:'SUPERSET with exercise 9 — performed immediately after Overhead Tricep Ext. Rest 90 sec after completing both'},
+      {id:'s9',name:'Overhead Tricep Ext. (cable)',sets:3,reps:'12–15',rest:0,target:'20–25 kg',tempo:'3-1-2',rir:2,pattern:'Elbow extension',note:'SUPERSET with next exercise — go directly to Preacher Curl, no rest'},
+      {id:'s10',name:'EZ Bar Preacher Curl',sets:3,reps:'10–12',rest:90,target:'30–35 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion',note:'SUPERSET with previous — rest 90 sec after completing both'},
       {id:'s11',name:'Incline DB Curl',sets:3,reps:'10–12',rest:60,target:'12–14 kg/DB',tempo:'3-0-2',rir:2,pattern:'Bicep stretch'},
       {id:'s12',name:'Wrist Curl + Reverse',sets:2,reps:'20 each',rest:45,target:'10–12 kg',tempo:'2-0-2',rir:2,pattern:'Forearm'},
     ],
@@ -157,6 +159,36 @@ const DAYS={
       {id:'ss8',name:'90/90 Hip Stretch',hold:'60 sec each · 1 set',muscles:'Hip internal + external rotators'},
     ]}
 };
+
+// ═══════════════════════════════════
+// PERIODIZATION ENGINE
+// ═══════════════════════════════════
+// 12-week wave = 36 sessions (3/week)
+const PHASES=[
+  {key:'strength',name:'STRENGTH',from:0,to:11,wPct:1.00,cReps:'4–6',iReps:'8–10',restPct:1.0,rir:'RIR 2',color:'var(--blu)',bg:'var(--blu-bg)',desc:'Heavy loads · long rest · neural drive'},
+  {key:'hyper',name:'HYPERTROPHY',from:12,to:23,wPct:0.85,cReps:'8–12',iReps:'10–15',restPct:0.75,rir:'RIR 2',color:'var(--grn)',bg:'var(--grn-bg)',desc:'Moderate loads · volume · time under tension'},
+  {key:'pump',name:'PUMP / ENDURANCE',from:24,to:29,wPct:0.60,cReps:'15–20',iReps:'15–25',restPct:0.55,rir:'RIR 2',color:'var(--amb)',bg:'var(--amb-bg)',desc:'Light loads · short rest · metabolic stress'},
+  {key:'deload',name:'DELOAD',from:30,to:35,wPct:0.55,cReps:'8–10',iReps:'10–12',restPct:1.0,rir:'RIR 4+',color:'var(--pur)',bg:'var(--pur-bg)',desc:'Recovery week · easy sets · CNS + hormone rebound'}
+];
+const CKEY='gymv5_cycle';
+function getCycle(){try{return parseInt(localStorage.getItem(CKEY)||'0',10);}catch(e){return 0;}}
+function setCycle(n){try{localStorage.setItem(CKEY,String(n));}catch(e){}}
+function bumpCycle(){setCycle((getCycle()+1)%36);}
+function curPhase(){const n=getCycle()%36;return PHASES.find(p=>n>=p.from&&n<=p.to)||PHASES[0];}
+function cyclePos(){return (getCycle()%36)+1;}
+function isCompound(ex){return ex.rest>=120;}
+function adjW(target,pct){
+  if(!target||target==='Bodyweight'||target==='—')return target;
+  return target.replace(/\d+(\.\d+)?/g,m=>{
+    const v=parseFloat(m)*pct;
+    return String(Math.round(v/2.5)*2.5).replace(/\.0$/,'');
+  });
+}
+function adjReps(ex,ph){
+  if(ex.tempo==='—'||/walk|each/.test(ex.reps))return ex.reps; // carries & unilateral counts unchanged
+  return isCompound(ex)?ph.cReps:ph.iReps;
+}
+function adjRest(ex,ph){if(!ex.rest)return 0;return Math.max(30,Math.round(ex.rest*ph.restPct/15)*15);}
 
 // ═══════════════════════════════════
 // STATE
@@ -279,6 +311,16 @@ function rHome(){
         </div>
       </div>`:''}
 
+      ${(()=>{const ph=curPhase();const pos=cyclePos();const week=Math.ceil(pos/3);
+        return`<div onclick="S.view='history';render()" style="background:${ph.bg};border:0.5px solid ${ph.color};border-radius:14px;padding:13px 16px;margin-bottom:14px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+            <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:${ph.color}">PHASE: ${ph.name}</span>
+            <span style="font-size:11px;color:${ph.color}">Week ${week}/12 · Session ${pos}/36</span>
+          </div>
+          <div style="font-size:12px;color:var(--mut)">${ph.desc}</div>
+          <div style="font-size:11px;color:${ph.color};margin-top:4px">Tap to change phase or view history ›</div>
+          <div class="progress" style="margin-top:9px"><div class="pfill" style="width:${Math.round(pos/36*100)}%;background:${ph.color}"></div></div>
+        </div>`;})()}
       <div class="slbl">SELECT SESSION</div>
       ${['monday','wednesday','saturday'].map(k=>{
         const d=DAYS[k],last=S.history.find(h=>h.day===k),tot=d.exercises.reduce((a,e)=>a+e.sets,0);
@@ -300,18 +342,18 @@ function rHome(){
         </div>`;
       }).join('')}
 
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+        <div class="slbl" style="padding-bottom:0">HISTORY &amp; PHASE</div>
+        <button class="btn btn-outline btn-sm" onclick="S.view='history';render()">Open →</button>
+      </div>
       ${S.history.length>0?`
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
-          <div class="slbl" style="padding-bottom:0">SESSION HISTORY</div>
-          <button class="btn btn-outline btn-sm" onclick="S.view='history';render()">View all →</button>
-        </div>
         <div style="margin-top:10px">
         ${S.history.slice(0,3).map((h,i)=>`
           <div class="hist-row">
             <div class="hist-hdr" onclick="S.openHist=S.openHist===h.ts?null:h.ts;render()">
               <div>
                 <div style="font-size:14px;font-weight:600">${h.dayName} <span style="font-weight:400;color:var(--mut)">· ${h.date}</span></div>
-                <div style="font-size:12px;color:var(--mut);margin-top:2px">${h.d}/${h.t} sets completed</div>
+                <div style="font-size:12px;color:var(--mut);margin-top:2px">${h.d}/${h.t} sets${h.phase?' · '+h.phase:''}</div>
               </div>
               <span style="font-size:16px;color:var(--mut)">${S.openHist===h.ts?'∧':'∨'}</span>
             </div>
@@ -344,16 +386,30 @@ function rHistory(){
   return`<div class="safe-top">
     <div style="background:var(--surf);border-bottom:0.5px solid var(--bdr);padding:max(env(safe-area-inset-top,0px),14px) 16px 14px;display:flex;align-items:center;gap:10px">
       <button class="btn btn-outline btn-sm" onclick="S.view='home';render()" style="width:36px;height:36px;padding:0;border-radius:50%;font-size:20px">‹</button>
-      <h2>Session History</h2>
+      <h2>History &amp; Phase Settings</h2>
     </div>
     <div class="scroll-view"><div class="sc" style="padding-top:14px">
-      ${S.history.length===0?`<div style="text-align:center;padding:3rem 1rem;color:var(--mut)">No sessions saved yet.</div>`:''}
+      <div style="margin-bottom:20px">
+        <div class="slbl">PERIODIZATION</div>
+        <div style="font-size:13px;color:var(--mut);margin-bottom:10px">Current: <b style="color:${curPhase().color}">${curPhase().name}</b> · Session ${cyclePos()}/36 (Week ${Math.ceil(cyclePos()/3)}/12)</div>
+        <div style="font-size:12px;color:var(--mut);margin-bottom:8px">Jump directly to a phase (e.g. after weeks already trained outside the app):</div>
+        <div style="display:flex;gap:6px;margin-bottom:8px">
+          ${PHASES.map(p=>`<button class="btn btn-sm" style="flex:1;padding:8px 4px;font-size:11px;background:${p.bg};color:${p.color};border:0.5px solid ${p.color};${curPhase().key===p.key?'font-weight:700;box-shadow:0 0 0 1.5px '+p.color:''}" onclick="setCycle(${p.from});render()">${p.name.split(' ')[0]}</button>`).join('')}
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button class="btn btn-outline btn-sm" style="flex:1" onclick="bumpCycle();render()">Skip 1 session →</button>
+          <button class="btn btn-outline btn-sm" style="flex:1" onclick="setCycle(getCycle()+3>35?0:getCycle()+3);render()">Skip 1 week →</button>
+        </div>
+        <button class="btn btn-outline btn-full btn-sm" onclick="if(confirm('Restart the 12-week cycle at Strength phase?')){setCycle(0);render()}">Restart Cycle (Strength Wk 1)</button>
+      </div>
+      <div class="slbl">SESSION HISTORY</div>
+      ${S.history.length===0?`<div style="text-align:center;padding:2rem 1rem;color:var(--mut)">No sessions saved yet.</div>`:''}
       ${S.history.map((h,i)=>`
         <div class="hist-row">
           <div class="hist-hdr" onclick="S.openHist=S.openHist===h.ts?null:h.ts;render()">
             <div>
               <div style="font-size:14px;font-weight:600">${h.dayName} <span style="font-weight:400;color:var(--mut)">· ${h.date}</span></div>
-              <div style="font-size:12px;color:var(--mut);margin-top:2px">${h.d}/${h.t} sets · tap to see weights</div>
+              <div style="font-size:12px;color:var(--mut);margin-top:2px">${h.d}/${h.t} sets${h.phase?' · '+h.phase:''} · tap to see weights</div>
             </div>
             <span style="font-size:16px;color:var(--mut)">${S.openHist===h.ts?'∧':'∨'}</span>
           </div>
@@ -367,6 +423,8 @@ function rHistory(){
 }
 
 function rExCard(ex){
+  const ph=curPhase();
+  const exReps=adjReps(ex,ph),exTarget=adjW(ex.target,ph.wPct),exRest=adjRest(ex,ph);
   const da=S.setsDone[ex.id]||[],dc=da.filter(Boolean).length,all=dc===ex.sets,open=S.openEx===ex.id;
   const pills=Array.from({length:ex.sets},(_,i)=>`<div class="pill ${da[i]?'done':''}"></div>`).join('');
   let body='';
@@ -380,17 +438,18 @@ function rExCard(ex){
       <span class="badge b-muted">Tempo ${esc(ex.tempo)}</span>
       ${ex.rir>0?`<span class="badge b-muted">RIR ${ex.rir}</span>`:''}
       <span class="badge b-muted">${esc(ex.pattern)}</span>
-      <span class="badge b-muted">Rest ${fmt(ex.rest)}</span>
+      <span class="badge b-muted">Rest ${fmt(exRest)}</span>
+      <span class="badge" style="background:${ph.bg};color:${ph.color}">${ph.rir}</span>
       ${ex.note?`<span class="badge b-purple" style="flex:0 0 100%;margin-top:2px">${esc(ex.note)}</span>`:''}
     </div>`;
     const rows=Array.from({length:ex.sets},(_,i)=>{
       const done=!!da[i],w=(S.weights[ex.id]&&S.weights[ex.id][i]!==undefined)?S.weights[ex.id][i]:'';
       return`<div class="set-row">
         <div class="snum ${done?'done':''}">${i+1}</div>
-        <div class="set-info">${esc(ex.reps)} reps</div>
+        <div class="set-info">${esc(exReps)} reps</div>
         <input class="win" type="text" inputmode="decimal" placeholder="kg" value="${esc(w)}"
           id="w-${ex.id}-${i}" onchange="setW('${ex.id}',${i},this.value);autoSave()" onclick="event.stopPropagation()">
-        <button class="tick ${done?'done':''}" onclick="event.stopPropagation();tickSet('${ex.id}',${i},${done?0:1},${ex.rest})">
+        <button class="tick ${done?'done':''}" onclick="event.stopPropagation();tickSet('${ex.id}',${i},${done?0:1},${exRest})">
           ${done?'✓':''}
         </button>
       </div>`;
@@ -405,7 +464,7 @@ function rExCard(ex){
           ${ex.isNew?`<span class="badge b-new">NEW</span>`:''}
           <span class="ex-title" style="color:${all?'var(--grn)':'var(--txt)'}">${esc(ex.name)}</span>
         </div>
-        <div class="ex-sub">${ex.sets} × ${esc(ex.reps)} · ${esc(ex.target)}</div>
+        <div class="ex-sub">${ex.sets} × ${esc(exReps)} · ${esc(exTarget)}</div>
         <div class="ex-pills">${pills}</div>
       </div>
       <div style="display:flex;align-items:center;gap:5px;margin-left:8px;margin-top:2px">
@@ -429,7 +488,7 @@ function rSession(){
           <span class="badge ${day.badge}">${day.short}</span>
           <span style="font-size:15px;font-weight:700">${day.subtitle}</span>
         </div>
-        <div style="font-size:12px;color:var(--mut)">${d}/${t} sets · ${pct}%</div>
+        <div style="font-size:12px;color:var(--mut)">${d}/${t} sets · ${pct}% · <span style="color:${curPhase().color};font-weight:600">${curPhase().name}</span></div>
       </div>
       <button class="btn btn-sm ${S.saveMsg==='Saved!'?'btn-success':'btn-save'}" onclick="saveSess()">${S.saveMsg||'Save'}</button>
     </div>
@@ -546,7 +605,7 @@ function saveSess(){
   captureWeights();
   const{d,t}=getTotals();
   const sess={date:new Date().toLocaleDateString('fr-CH'),day:S.dayKey,
-    dayName:DAYS[S.dayKey].name,d,t,
+    dayName:DAYS[S.dayKey].name,d,t,phase:curPhase().name,
     weights:JSON.parse(JSON.stringify(S.weights)),ts:Date.now()};
   S.history=[sess,...S.history].slice(0,30);
   saveH();S.saveMsg='Saved!';render();
@@ -554,6 +613,7 @@ function saveSess(){
 }
 function finSess(){
   saveSess();
+  bumpCycle();
   clearAutoSave();
   setTimeout(()=>goHome(),300);
 }
