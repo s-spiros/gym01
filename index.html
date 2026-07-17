@@ -157,6 +157,28 @@ const DAYS={
       {id:'ss6',name:'Bicep + Forearm Stretch',hold:'30 sec each · 2 sets',muscles:'Biceps, brachialis, forearms'},
       {id:'ss7',name:'Tricep Overhead Stretch',hold:'30 sec each · 2 sets',muscles:'Triceps long head'},
       {id:'ss8',name:'90/90 Hip Stretch',hold:'60 sec each · 1 set',muscles:'Hip internal + external rotators'},
+    ]},
+  trx:{key:'trx',name:'TRX Holiday',short:'TRX',subtitle:'TRX Full Body',detail:'Holiday · Suspension · No gym needed',badge:'b-purple',
+    warmup:['Arm circles + leg swings × 10 each','TRX squat (light, holding straps) × 10','Scapular pulls on TRX × 10'],
+    exercises:[
+      {id:'t1',name:'TRX Row (low body angle)',sets:4,reps:'10–12',rest:90,target:'Body angle = load',tempo:'3-1-1',rir:2,pattern:'Pull horizontal',note:'Walk feet forward to increase difficulty. Replaces barbell row'},
+      {id:'t2',name:'TRX Push-up (feet in straps)',sets:4,reps:'10–12',rest:90,target:'Feet elevated',tempo:'3-1-1',rir:2,pattern:'Push horizontal',note:'Instability doubles chest/core recruitment vs floor push-up'},
+      {id:'t3',name:'TRX Chest Fly',sets:3,reps:'10–15',rest:60,target:'Body angle = load',tempo:'3-0-2',rir:2,pattern:'Chest stretch',note:'Deep stretch at bottom — your chest gap exercise on holiday'},
+      {id:'t4',name:'TRX Face Pull + Y-Raise',sets:3,reps:'15–20',rest:60,target:'Body angle = load',tempo:'2-2-2',rir:1,pattern:'External rotation',note:'Non-negotiable — maintains rotator cuff health while travelling'},
+      {id:'t5',name:'TRX Pistol Squat (assisted)',sets:3,reps:'8–10 each',rest:90,target:'Bodyweight',tempo:'3-1-1',rir:2,pattern:'Squat unilateral',note:'Hold straps lightly for balance. Replaces Bulgarian split squat'},
+      {id:'t6',name:'TRX Hamstring Curl',sets:3,reps:'10–15',rest:90,target:'Heels in straps',tempo:'3-1-2',rir:2,pattern:'Hip hinge',note:'Lying on back, heels in cradles. Replaces Nordic curl'},
+      {id:'t7',name:'TRX Bicep Curl',sets:3,reps:'12–15',rest:60,target:'Body angle = load',tempo:'3-1-2',rir:2,pattern:'Elbow flexion',note:'Lean back, curl body up. Keep elbows high and fixed'},
+      {id:'t8',name:'TRX Tricep Extension',sets:3,reps:'12–15',rest:60,target:'Body angle = load',tempo:'3-1-2',rir:2,pattern:'Elbow extension',note:'Face away, lower forehead between hands — skull crusher pattern'},
+      {id:'t9',name:'TRX Pike',sets:3,reps:'10–12',rest:60,target:'Feet in straps',tempo:'3-1-1',rir:1,pattern:'Core flexion',note:'From plank, pike hips up. Replaces hanging leg raise'},
+      {id:'t10',name:'TRX Sprinter Start + Jump',sets:3,reps:'8 each side',rest:75,target:'Bodyweight',tempo:'X-0-X',rir:2,pattern:'Power',note:'Explosive — maintains fast-twitch drive without heavy loads'},
+    ],
+    stretches:[
+      {id:'ts1',name:'TRX Chest Stretch (arms in straps)',hold:'45 sec · 2 sets',muscles:'Pectoralis major/minor'},
+      {id:'ts2',name:'TRX Lat Stretch (hinge back)',hold:'45 sec each · 2 sets',muscles:'Latissimus dorsi'},
+      {id:'ts3',name:'Standing Quad Stretch',hold:'45 sec each · 2 sets',muscles:'Quadriceps, hip flexors'},
+      {id:'ts4',name:'Standing Hamstring Stretch',hold:'45 sec each · 2 sets',muscles:'Hamstrings'},
+      {id:'ts5',name:'Pigeon Pose (or Figure-4)',hold:'60 sec each · 2 sets',muscles:'Glutes, piriformis'},
+      {id:'ts6',name:'Overhead Tricep + Cross-Body Shoulder',hold:'30 sec each · 2 sets',muscles:'Triceps, posterior deltoid'},
     ]}
 };
 
@@ -322,7 +344,7 @@ function rHome(){
           <div class="progress" style="margin-top:9px"><div class="pfill" style="width:${Math.round(pos/36*100)}%;background:${ph.color}"></div></div>
         </div>`;})()}
       <div class="slbl">SELECT SESSION</div>
-      ${['monday','wednesday','saturday'].map(k=>{
+      ${['monday','wednesday','saturday','trx'].map(k=>{
         const d=DAYS[k],last=S.history.find(h=>h.day===k),tot=d.exercises.reduce((a,e)=>a+e.sets,0);
         return`<div class="day-card" onclick="startSess('${k}')">
           <div style="display:flex;align-items:flex-start;justify-content:space-between">
