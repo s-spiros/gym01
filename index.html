@@ -94,13 +94,15 @@ const DAYS={
     warmup:['Shoulder CARs × 5 each arm','Band pull-aparts × 15','Thoracic extension over foam roller × 10'],
     exercises:[
       {id:'m1',name:'Barbell Bench Press',sets:4,reps:'5–6',rest:180,target:'65–75 kg',tempo:'3-1-1',rir:2,pattern:'Push horizontal'},
-      {id:'m2',name:'Incline DB Press',sets:3,reps:'8–10',rest:90,target:'22–28 kg/DB',tempo:'3-1-2',rir:2,pattern:'Push incline'},
-      {id:'m3',name:'Cable Chest Fly (mid pulley)',sets:3,reps:'12–15',rest:60,target:'12–16 kg/side',tempo:'3-0-2',rir:2,pattern:'Chest isolation',note:'Constant tension through full ROM — squeeze hard at centre'},
+      {id:'m2',name:'Incline DB Press',sets:3,reps:'8–10',rest:90,target:'22–28 kg/DB',tempo:'3-1-2',rir:2,pattern:'Push incline',alt:{id:'m2b',name:'Flat DB Press (neutral grip)',reps:'8–10',target:'24–30 kg/DB',pattern:'Push horizontal',note:'Alternate-week variant. Neutral grip is easier on the shoulder joint'}},
+      {id:'m3',name:'Cable Chest Fly (mid pulley)',sets:3,reps:'12–15',rest:60,target:'12–16 kg/side',tempo:'3-0-2',rir:2,pattern:'Chest isolation',note:'Constant tension through full ROM — squeeze hard at centre',alt:{id:'m3b',name:'Cable Fly (low-to-high pulley)',target:'8–12 kg/side',pattern:'Chest upper (clavicular)',note:'Alternate-week variant. Low pulley, sweep up and in to hit the upper chest'}},
       {id:'m4',name:'Seated DB Overhead Press',sets:4,reps:'6–8',rest:120,target:'20–26 kg/DB',tempo:'3-1-1',rir:2,pattern:'Push vertical'},
       {id:'m5',name:'Cable Lateral Raise',sets:3,reps:'15–20',rest:45,target:'7–10 kg/side',tempo:'3-0-2',rir:2,pattern:'Shoulder isolation'},
       {id:'m6',name:'Weighted Dips',sets:3,reps:'8–10',rest:90,target:'BW+10–15 kg',tempo:'3-1-1',rir:2,pattern:'Push compound'},
-      {id:'m7',name:'Cable Tricep Pushdown',sets:3,reps:'12–15',rest:60,target:'20–28 kg',tempo:'3-0-2',rir:2,pattern:'Elbow extension'},
+      {id:'m7',name:'Cable Tricep Pushdown',sets:3,reps:'12–15',rest:60,target:'20–28 kg',tempo:'3-0-2',rir:2,pattern:'Elbow extension',alt:{id:'m7b',name:'Rope Pushdown',target:'18–26 kg',pattern:'Elbow extension',note:'Alternate-week variant. Spread the rope apart at the bottom'}},
       {id:'m8',name:'Cable Fly (high-to-low pulley)',sets:3,reps:'12–15',rest:60,target:'12–16 kg/side',tempo:'3-0-2',rir:2,pattern:'Chest upper sternal',note:'High pulley — sweep down and in, squeeze at centre. Different angle to mid-pulley fly'},
+      {id:'m10',name:'Ab Wheel Rollout',sets:3,reps:'10–12',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core anti-ext.',note:'Core anti-extension. Ribs down, do not let the lower back sag'},
+      {id:'m11',name:'Pallof Press (cable)',sets:2,reps:'10 each',rest:45,target:'8–12 kg',tempo:'2-2-2',rir:2,pattern:'Anti-rotation',note:'Core anti-rotation. Stand side-on to the cable, press out and hold 2 sec, resist the rotation'},
       {id:'m9',name:'Skull Crushers (EZ Bar) — Optional',sets:3,reps:'10–12',rest:75,target:'25–35 kg',tempo:'3-0-1',rir:2,pattern:'Tricep long head',note:'Optional — only if time and energy allow. Lower bar to forehead, elbows fixed'},
     ],
     stretches:[
@@ -116,12 +118,14 @@ const DAYS={
     exercises:[
       {id:'w1',name:'Weighted Pull-ups',sets:4,reps:'5–6',rest:180,target:'BW+10–15 kg',tempo:'3-1-1',rir:2,pattern:'Pull vertical'},
       {id:'w2',name:'Barbell Bent-over Row',sets:4,reps:'6–8',rest:120,target:'65–75 kg',tempo:'3-1-1',rir:2,pattern:'Pull horizontal'},
-      {id:'w3',name:'Incline DB Row',sets:3,reps:'10–12',rest:90,target:'28–34 kg/DB',tempo:'3-1-2',rir:2,pattern:'Pull unilateral'},
+      {id:'w3',name:'Incline DB Row',sets:3,reps:'10–12',rest:90,target:'28–34 kg/DB',tempo:'3-1-2',rir:2,pattern:'Pull unilateral',alt:{id:'w3b',name:'Single-Arm DB Row (bench)',reps:'10–12 each',target:'30–36 kg',pattern:'Pull unilateral',note:'Alternate-week variant. One hand and knee on the bench, pull to the hip'}},
       {id:'w4',name:'Seated Cable Row (wide grip)',sets:3,reps:'12–15',rest:75,target:'50–60 kg',tempo:'3-1-2',rir:2,pattern:'Pull mid-back'},
+      {id:'w10',name:'Lat Pulldown (wide grip)',sets:3,reps:'10–12',rest:75,target:'60–70 kg',tempo:'3-1-2',rir:2,pattern:'Pull vertical (lats)',note:'Lat width also adds to chest girth. Drive elbows down, full stretch at the top',alt:{id:'w10b',name:'Straight-Arm Cable Pulldown',reps:'12–15',target:'25–35 kg',pattern:'Lat isolation',note:'Alternate-week variant. Arms straight, sweep the bar to the thighs, feel the lat stretch at the top'}},
       {id:'w5',name:'Face Pulls (cable)',sets:4,reps:'15–20',rest:45,target:'15–20 kg',tempo:'2-2-2',rir:1,pattern:'External rotation'},
       {id:'w6',name:'Barbell Curl',sets:3,reps:'8–10',rest:90,target:'35–45 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion'},
-      {id:'w7',name:'Hammer Curl',sets:3,reps:'12–15',rest:60,target:'14–18 kg/DB',tempo:'3-0-1',rir:2,pattern:'Brachialis'},
+      {id:'w7',name:'Hammer Curl',sets:3,reps:'12–15',rest:60,target:'14–18 kg/DB',tempo:'3-0-1',rir:2,pattern:'Brachialis',alt:{id:'w7b',name:'Cross-Body Hammer Curl',target:'12–16 kg/DB',pattern:'Brachialis',note:'Alternate-week variant. Curl across the body towards the opposite shoulder'}},
       {id:'w8',name:'Hanging Leg Raise',sets:3,reps:'12–15',rest:60,target:'Bodyweight',tempo:'3-1-1',rir:1,pattern:'Core flexion'},
+      {id:'w11',name:'Side Plank',sets:3,reps:'30 s each',rest:45,target:'Bodyweight',tempo:'—',rir:0,pattern:'Anti-lateral flexion',note:'Hard tension, not a long hold: stack the feet, lift the hips, squeeze the glutes. Add a weight on the hip when 40 s is easy',alt:{id:'w11b',name:'Suitcase Carry',reps:'30 m each',rest:60,target:'24–30 kg',pattern:'Anti-lateral flexion',note:'Alternate-week variant. One heavy dumbbell on one side, stay tall and do not lean, then switch hands'}},
       {id:'w9',name:'Cable Curl (low pulley) — Optional',sets:3,reps:'12–15',rest:60,target:'15–25 kg',tempo:'3-1-2',rir:2,pattern:'Bicep constant tension',note:'Optional — only if time and energy allow. Cable keeps tension at full extension'},
     ],
     stretches:[
@@ -142,10 +146,11 @@ const DAYS={
       {id:'s5',name:'Nordic Hamstring Curl',sets:3,reps:'6–8',rest:120,target:'Bodyweight',tempo:'5-0-X',rir:1,pattern:'Hip hinge eccentric'},
       {id:'s6',name:'Standing Calf Raise',sets:4,reps:'12–15',rest:60,target:'50–70 kg',tempo:'3-2-1',rir:2,pattern:'Ankle plantar'},
       {id:'s7',name:"Farmer's Carry",sets:3,reps:'40 m walk',rest:90,target:'28–34 kg/hand',tempo:'—',rir:0,pattern:'Loaded carry'},
+      {id:'s13',name:'Cable Crunch (kneeling)',sets:3,reps:'10–15',rest:60,target:'25–35 kg',tempo:'2-1-2',rir:1,pattern:'Core flexion',note:'Round the spine and bring the ribs to the pelvis. Do not pull with the arms'},
       {id:'s8',name:'Close-Grip Bench Press',sets:3,reps:'8–10',rest:90,target:'55–65 kg',tempo:'3-1-1',rir:2,pattern:'Push tricep',part:'PART 2 — ARM BLOCK'},
       {id:'s9',name:'Overhead Tricep Ext. (cable)',sets:3,reps:'12–15',rest:0,target:'20–25 kg',tempo:'3-1-2',rir:2,pattern:'Elbow extension',note:'SUPERSET with next exercise — go directly to Preacher Curl, no rest'},
       {id:'s10',name:'EZ Bar Preacher Curl',sets:3,reps:'10–12',rest:90,target:'30–35 kg',tempo:'3-1-2',rir:2,pattern:'Elbow flexion',note:'SUPERSET with previous — rest 90 sec after completing both'},
-      {id:'s11',name:'Incline DB Curl',sets:3,reps:'10–12',rest:60,target:'12–14 kg/DB',tempo:'3-0-2',rir:2,pattern:'Bicep stretch'},
+      {id:'s11',name:'Incline DB Curl',sets:3,reps:'10–12',rest:60,target:'12–14 kg/DB',tempo:'3-0-2',rir:2,pattern:'Bicep stretch',alt:{id:'s11b',name:'Spider Curl (DB, incline bench)',target:'10–12 kg/DB',pattern:'Bicep short head',note:'Alternate-week variant. Chest on the incline bench, arms hanging straight down'}},
       {id:'s12',name:'Wrist Curl + Reverse',sets:2,reps:'20 each',rest:45,target:'10–12 kg',tempo:'2-0-2',rir:2,pattern:'Forearm'},
     ],
     stretches:[
@@ -212,6 +217,15 @@ function adjReps(ex,ph){
 }
 function adjRest(ex,ph){if(!ex.rest)return 0;return Math.max(30,Math.round(ex.rest*ph.restPct/15)*15);}
 
+// Weekly A/B alternation: odd weeks = set A (main exercise), even weeks = set B (alt)
+function weekNo(){return Math.ceil(cyclePos()/3);}
+function isAltWeek(){return weekNo()%2===0;}
+function resolveEx(ex,alt){
+  if(alt===undefined)alt=isAltWeek();
+  return(ex.alt&&alt)?Object.assign({},ex,ex.alt):ex;
+}
+function dayExercises(k){return DAYS[k].exercises.map(e=>resolveEx(e));}
+
 // ═══════════════════════════════════
 // STATE
 // ═══════════════════════════════════
@@ -248,9 +262,9 @@ function fmt(s){const m=Math.floor(s/60),r=s%60;return m>0?m+':'+String(r).padSt
 
 function getTotals(){
   if(!S.dayKey)return{d:0,t:0};
-  const day=DAYS[S.dayKey];
-  const t=day.exercises.reduce((a,e)=>a+e.sets,0);
-  const d=day.exercises.reduce((a,e)=>a+(S.setsDone[e.id]||[]).filter(Boolean).length,0);
+  const exs=dayExercises(S.dayKey);
+  const t=exs.reduce((a,e)=>a+e.sets,0);
+  const d=exs.reduce((a,e)=>a+(S.setsDone[e.id]||[]).filter(Boolean).length,0);
   return{d,t};
 }
 
@@ -296,7 +310,7 @@ function addT(s){
 
 function captureWeights(){
   if(!S.dayKey)return;
-  DAYS[S.dayKey].exercises.forEach(ex=>{
+  dayExercises(S.dayKey).forEach(ex=>{
     for(let i=0;i<ex.sets;i++){
       const el=document.getElementById('w-'+ex.id+'-'+i);
       if(el){if(!S.weights[ex.id])S.weights[ex.id]={};S.weights[ex.id][i]=el.value;}
@@ -317,7 +331,7 @@ function rHome(){
   const rec=S.history[0];
   return`<div class="safe-top">
     <div style="padding:20px 16px 10px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--mut);margin-bottom:6px">PROGRAM V5</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--mut);margin-bottom:6px">PROGRAM V7</div>
       <h1>Training Program</h1>
       <p style="font-size:13px;color:var(--mut);margin-top:4px">Tsatsouline · Gray Cook · Schoenfeld</p>
     </div>
@@ -337,7 +351,7 @@ function rHome(){
         return`<div onclick="S.view='history';render()" style="background:${ph.bg};border:0.5px solid ${ph.color};border-radius:14px;padding:13px 16px;margin-bottom:14px;cursor:pointer">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
             <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:${ph.color}">PHASE: ${ph.name}</span>
-            <span style="font-size:11px;color:${ph.color}">Week ${week}/12 · Session ${pos}/36</span>
+            <span style="font-size:11px;color:${ph.color}">Week ${week}/12 · Set ${isAltWeek()?'B':'A'} · Session ${pos}/36</span>
           </div>
           <div style="font-size:12px;color:var(--mut)">${ph.desc}</div>
           <div style="font-size:11px;color:${ph.color};margin-top:4px">Tap to change phase or view history ›</div>
@@ -345,7 +359,7 @@ function rHome(){
         </div>`;})()}
       <div class="slbl">SELECT SESSION</div>
       ${['monday','wednesday','saturday','trx'].map(k=>{
-        const d=DAYS[k],last=S.history.find(h=>h.day===k),tot=d.exercises.reduce((a,e)=>a+e.sets,0);
+        const d=DAYS[k],exs=dayExercises(k),last=S.history.find(h=>h.day===k),tot=exs.reduce((a,e)=>a+e.sets,0);
         return`<div class="day-card" onclick="startSess('${k}')">
           <div style="display:flex;align-items:flex-start;justify-content:space-between">
             <div style="flex:1">
@@ -354,7 +368,7 @@ function rHome(){
                 <span style="font-size:15px;font-weight:700">${d.subtitle}</span>
               </div>
               <div style="font-size:13px;color:var(--mut);margin-bottom:5px">${d.detail}</div>
-              <div style="font-size:12px;color:var(--mut)">${d.exercises.length} exercises · ${tot} sets</div>
+              <div style="font-size:12px;color:var(--mut)">${exs.length} exercises · ${tot} sets</div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-left:8px">
               <span style="font-size:22px;color:var(--mut)">›</span>
@@ -387,10 +401,9 @@ function rHome(){
 }
 
 function rHistDetail(h){
-  if(!h.weights||!h.dayKey)return'';
-  const day=DAYS[h.dayKey];
-  if(!day)return'';
-  const rows=day.exercises.map(ex=>{
+  const dk=h.dayKey||h.day;
+  if(!h.weights||!dk||!DAYS[dk])return'';
+  const rows=DAYS[dk].exercises.map(e=>resolveEx(e,!!h.alt)).map(ex=>{
     const w=h.weights[ex.id];
     if(!w)return`<div class="hist-ex-row"><div style="font-size:13px;color:var(--mut);flex:1">${esc(ex.name)}</div><div style="font-size:12px;color:var(--mut)">—</div></div>`;
     const vals=Array.from({length:ex.sets},(_,i)=>w[i]||'—').join(' · ');
@@ -413,7 +426,7 @@ function rHistory(){
     <div class="scroll-view"><div class="sc" style="padding-top:14px">
       <div style="margin-bottom:20px">
         <div class="slbl">PERIODIZATION</div>
-        <div style="font-size:13px;color:var(--mut);margin-bottom:10px">Current: <b style="color:${curPhase().color}">${curPhase().name}</b> · Session ${cyclePos()}/36 (Week ${Math.ceil(cyclePos()/3)}/12)</div>
+        <div style="font-size:13px;color:var(--mut);margin-bottom:10px">Current: <b style="color:${curPhase().color}">${curPhase().name}</b> · Session ${cyclePos()}/36 (Week ${Math.ceil(cyclePos()/3)}/12) · Exercise set <b>${isAltWeek()?'B':'A'}</b> (alternates weekly)</div>
         <div style="font-size:12px;color:var(--mut);margin-bottom:8px">Jump directly to a phase (e.g. after weeks already trained outside the app):</div>
         <div style="display:flex;gap:6px;margin-bottom:8px">
           ${PHASES.map(p=>`<button class="btn btn-sm" style="flex:1;padding:8px 4px;font-size:11px;background:${p.bg};color:${p.color};border:0.5px solid ${p.color};${curPhase().key===p.key?'font-weight:700;box-shadow:0 0 0 1.5px '+p.color:''}" onclick="setCycle(${p.from});render()">${p.name.split(' ')[0]}</button>`).join('')}
@@ -460,6 +473,7 @@ function rExCard(ex){
       <span class="badge b-muted">Tempo ${esc(ex.tempo)}</span>
       ${ex.rir>0?`<span class="badge b-muted">RIR ${ex.rir}</span>`:''}
       <span class="badge b-muted">${esc(ex.pattern)}</span>
+      ${ex.alt?`<span class="badge b-new">A/B weekly</span>`:''}
       <span class="badge b-muted">Rest ${fmt(exRest)}</span>
       <span class="badge" style="background:${ph.bg};color:${ph.color}">${ph.rir}</span>
       ${ex.note?`<span class="badge b-purple" style="flex:0 0 100%;margin-top:2px">${esc(ex.note)}</span>`:''}
@@ -556,7 +570,7 @@ function rSession(){
           <button class="btn btn-outline btn-sm" onclick="stopTimer()">Skip</button>
         </div>
       </div>
-      ${day.exercises.map(ex=>rExCard(ex)).join('')}
+      ${dayExercises(S.dayKey).map(ex=>rExCard(ex)).join('')}
       ${allDone?`<div class="card">
         <div style="font-size:28px;margin-bottom:10px">💪</div>
         <h2 style="margin-bottom:6px">All sets complete!</h2>
@@ -579,7 +593,7 @@ function rSession(){
         <div style="font-size:40px;margin-bottom:12px">🏆</div>
         <h2 style="margin-bottom:6px">Session Complete!</h2>
         <p style="font-size:14px;color:var(--mut);margin-bottom:6px">${t} sets · ${day.stretches.length} stretches</p>
-        <p style="font-size:13px;color:var(--mut);margin-bottom:20px">Biological age: ~27 years</p>
+        <p style="font-size:13px;color:var(--mut);margin-bottom:20px">Biological age: ~29 years</p>
         <button class="btn btn-primary btn-full" onclick="finSess()" style="margin-bottom:8px">Finish & Save</button>
         <button class="btn btn-outline btn-full" onclick="goHome()">Back to Home</button>
       </div>`:''}
@@ -627,7 +641,7 @@ function saveSess(){
   captureWeights();
   const{d,t}=getTotals();
   const sess={date:new Date().toLocaleDateString('fr-CH'),day:S.dayKey,
-    dayName:DAYS[S.dayKey].name,d,t,phase:curPhase().name,
+    dayName:DAYS[S.dayKey].name,d,t,phase:curPhase().name,alt:isAltWeek(),
     weights:JSON.parse(JSON.stringify(S.weights)),ts:Date.now()};
   S.history=[sess,...S.history].slice(0,30);
   saveH();S.saveMsg='Saved!';render();
